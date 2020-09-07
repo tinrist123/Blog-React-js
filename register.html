@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .cardImg {
+    background: url("https://media.giphy.com/media/l0MYNB04rBb51QNtC/giphy.gif");
+    background-size: cover;
+    background-position: top left;
+    background-repeat: no-repeat;
+  }
+
+  .Signin-form {
+    min-height: 100vh;
+  }
+
+  form input {
+    display: block;
+  }
+
+  .card {
+    display: flex;
+  }
+
+  .cardImg {
+    width: 50%;
+  }
+
+  .container {
+    width: 1000px;
+  }
+
+  .container {
+    margin: 0 auto;
+  }
+
+  .container {
+    padding-top: 180px;
+  }
+
+  h2.title {
+    margin-bottom: 36px;
+  }
+
+  .card-Form {
+    padding: 57px 65px;
+    padding-bottom: 65px;
+  }
+
+  form input {
+    margin-bottom: 34px;
+  }
+
+  form input {
+    width: 100%;
+    padding: 5px 0;
+    font-size: 16px;
+    background: transparent;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .card {
+    background: #000;
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  }
+
+  h2.title {
+    color: #fff;
+    font-weight: 400;
+  }
+
+  input {
+    border: 0;
+  }
+
+  .card-Form {
+    width: 50%;
+  }
+
+  input[type="submit"] {
+    background: #4dae3c;
+    padding: 10px 5px;
+    width: 50%;
+    border-radius: 20px;
+  }
+
+  .container {
+    padding-bottom: 100px;
+  }
+
+  .Signin-form {
+    background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
+  }
+</style>
+
+<body>
+  <div class="Signin-form">
+    <div class="container">
+      <div class="card">
+        <div class="cardImg"></div>
+        <div class="card-Form">
+          <h2 class="title">Registration Info</h2>
+          <form action="../proccess/signup.inc.php" method="post">
+
+            <input type="text" name="usrName" placeholder="Username" />
+            <input type="password" name="pwd" placeholder="***" />
+            <input type="password" name="confirmpwd" placeholder="****" />
+            <input type="text" name="mail" placeholder="Email" />
+            <input type="submit" name="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

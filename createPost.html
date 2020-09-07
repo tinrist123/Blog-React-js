@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.color-animation/1/mainfile"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/decoupled-document/ckeditor.js"></script>
+    <link rel="stylesheet" href="./blog.css" />
+    <title>Blog</title>
+</head><body>
+    <div class="sidebar-menu__bgBlack"></div>
+    <div class="sidebar-menu">
+        <div class="sidebar-menu__nav">
+            <ul class="navigation">
+                <li><a href="">Blog</a></li>
+                <li><a href="">Category</a></li>
+                <li><a href="">Contact me</a></li>
+                <li><a href="">About me</a></li>
+                <li id="close-click">
+                    <a href="javascript:void(0)"><i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-menu__search">
+                <form action="">
+                    <div class="form-group">
+                        <label for="">
+                            <input type="text" name="txtSearch" class="txtSearch" placeholder="Keywords" />
+                            <input type="submit" value="GO" />
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <header id="maincontent" style="top: 0px;">
+            <div class="top-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="top-bar__logo">
+                                <a href="">
+                                    <img src="./images/logo.png" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="top-bar__bars">
+                                <a href=" javascript:void(0)"><i id="js-showNav" class="fa fa-bars" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    <main>
+        <div class="post-create-form">
+            <div class="title-input">
+                <div class="border-bottom"></div>
+                <span class='title-placeholder'>Tiêu Đề</span>
+                <input type="text"  />                  
+            </div>
+            <div class="submit-form">
+            <button style="display:block; margin-bottom:1em;">Overview</button> 
+              <button class="submit-post" type="submit">Đăng Bài <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</button>
+            </div>
+            <div id="toolbar-container"></div>
+            <div class="container">
+                <div id="editor">
+                    <p>This is the initial editor content.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+      const fontFamilyConfig = {
+        options: [
+          "default",
+          "Arial, Helvetica, sans-serif",
+          "Courier New, Courier, monospace",
+          "Georgia, serif",
+          "Lucida Sans Unicode, Lucida Grande, sans-serif",
+          "Tahoma, Geneva, sans-serif",
+          "Times New Roman, Times, serif",
+          "Trebuchet MS, Helvetica, sans-serif",
+          "Verdana, Geneva, sans-serif",
+        ],
+      };
+      DecoupledEditor.create(document.querySelector("#editor"), {
+        toolbar: [
+          "heading",
+          "bold",
+          "italic",
+          "alignment:left",
+          "alignment:right",
+          "alignment:center",
+          "alignment:justify",
+          "bulletedList",
+          "numberedList",
+          "bold",
+          "italic",
+          "undo",
+          "redo",
+          "fontBackgroundColor",
+          "fontColor",
+          "fontFamily",
+          "fontSize",
+          "highlight",
+          "blockquote",
+        ],
+        fontFamily: {
+          options: [
+            "default",
+            "Ubuntu, Arial, sans-serif",
+            "Ubuntu Mono, Courier New, Courier, monospace",
+            "Arial, Helvetica, sans-serif",
+            "Courier New, Courier, monospace",
+            "Georgia, serif",
+            "Lucida Sans Unicode, Lucida Grande, sans-serif",
+            "Tahoma, Geneva, sans-serif",
+            "Times New Roman, Times, serif",
+            "Trebuchet MS, Helvetica, sans-serif",
+            "Verdana, Geneva, sans-serif",
+            "FiraCode",
+            "Source Code Pro",
+          ],
+        },
+        fontSize: {
+          options: [9, 11, 13, "default", 17, 19, 21],
+        },
+        highlight: {
+          options: [
+            {
+              model: "pinkMarker",
+              class: "marker-pink",
+              title: "Pink Marker",
+              color: "var(--ck-highlight-marker-pink)",
+              type: "marker",
+            },
+            {
+              model: "redPen",
+              class: "pen-red",
+              title: "Red Pen",
+              color: "var(--ck-highlight-pen-red)",
+              type: "pen",
+            },
+          ],
+        },
+      })
+        .then((editor) => {
+          const toolbarContainer = document.querySelector("#toolbar-container");
+
+          toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    </script>
+    <script src="./js/showNav.js"></script>
+    <!-- <script src="./js/fixedTop_Bar.js"></script> -->
+  </body>
+</html>
