@@ -20,9 +20,15 @@ export default function FormInput(props) {
 
     function onClickAddingTag(e) {
         setAddingTag(true);
-        let a = document.getElementsByClassName('newTag');
-        if (a.length === 0) return;
-        setInput(tagInput.concat(a[a.length - 1].value));
+        let addingTag = document.getElementsByClassName('newTag');
+        if (addingTag.length === 0) return;
+
+        let addingList = [];
+
+        for (let i = 0; i < addingTag.length; i++) {
+            addingList.push(addingTag[i].value);
+        }
+        setInput(tagInput.concat(addingList));
     }
 
     async function checkDataAndSubmit() {
@@ -42,14 +48,26 @@ export default function FormInput(props) {
             alert("error", error);
         });
 
+        let checkboxes = document.getElementsByName('tagList');
+        let checkedboxes = [];
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                checkedboxes.push(checkboxes[i]);
+            }
+        }
+        // console.log(selectedImg);
+        console.log(tagInput);
+
         let data = {
             tags: tagInput.concat(a[a.length - 1].value),
             category: document.getElementById('newCate').value,
             content,
-            title
+            title,
+            checkedboxes
         };
 
-        console.log(data);
+        // console.log(data);
+
     }
 
     function fileSelectedHandler(event) {
@@ -71,11 +89,12 @@ export default function FormInput(props) {
                             </div>
                             <label for="">Category</label>
                             <div className="row">
-                                <Options value="CateName" name={'cateOptions'} url={'http://localhost/php/Blog/api/v1/category/all'} />
-                                <button onClick={onClickAddingCate} className="addingCate"><i class="fa fa-plus" ></i></button>
-                                {onLoadingAddingCate &&
+                                {(onLoadingAddingCate) ?
                                     <input id={'newCate'} onChange={(event) => setCateName(event.target.value)} type="text" name="newCate" placeholder="New Cate..." style={{ marginBottom: "0" }} />
+                                    :
+                                    <Options value="CateName" name={'cateOptions'} url={'http://localhost/php/Blog/api/v1/category/all'} />
                                 }
+                                <button onClick={onClickAddingCate} className="addingCate"><i class="fa fa-plus" ></i></button>
                             </div>
                             <label style={{ marginTop: "1rem" }}>Tags</label>
                             <div className="row">
