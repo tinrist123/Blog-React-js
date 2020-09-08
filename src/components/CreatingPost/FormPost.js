@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Options from './CategoryOptions';
 
+import TagsCheckbox from './TagOptions';
 
 
 export default function FormInput(props) {
@@ -51,57 +52,6 @@ export default function FormInput(props) {
         console.log(data);
     }
 
-    function onSubmitCate() {
-        let url = 'http://localhost/php/Blog/api/v1/category';
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                CateName
-            })
-        }).then(response => {
-            alert(response.statusText)
-            setAddingCate(false)
-        })
-            .catch(error => {
-                console.log(error)
-            })
-    }
-
-    function onSubmitTag() {
-        let a = document.getElementsByClassName('newTag');
-        if (a.length === 0) return;
-        if (a[a.length - 1].value === "") return alert("Empty field");
-        let tags = tagInput.concat(a[a.length - 1].value);
-        console.log(tags);
-        tags.shift();
-        let data = {
-            tags: tags
-        }
-        let url = 'http://localhost/php/Blog/api/v1/tags';
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => {
-                alert("Adding Success")
-                setInput(['content'])
-                setAddingTag(false)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-
-    }
-
-
     function fileSelectedHandler(event) {
         let form1 = new FormData();
         form1.append('image', event.target.files[0]);
@@ -126,25 +76,17 @@ export default function FormInput(props) {
                                 {onLoadingAddingCate &&
                                     <input id={'newCate'} onChange={(event) => setCateName(event.target.value)} type="text" name="newCate" placeholder="New Cate..." style={{ marginBottom: "0" }} />
                                 }
-                                {onLoadingAddingCate &&
-                                    <button onClick={onSubmitCate} className="addingTag" style={{ width: "40px" }}>Thêm</button>
-                                }
                             </div>
-
-
                             <label style={{ marginTop: "1rem" }}>Tags</label>
                             <div className="row">
-                                <Options name={'tagOptions'} value="TagName" url={'http://localhost/php/Blog/api/v1/tags'} />
-                                <button onClick={onClickAddingTag} className="addingTag"><i class="fa fa-plus" ></i></button>
+                                <TagsCheckbox name={'tagOptions'} value="TagName" url={'http://localhost/php/Blog/api/v1/tags'} />
                             </div>
+                            <button onClick={onClickAddingTag} className="addingTag"><i class="fa fa-plus" ></i></button>
                             <div className="form-addingTag" style={{ marginTop: "34px" }} >
                                 {onLoadingAddingTag &&
                                     tagInput.map((val, index) => {
                                         return <input key={index} className={'newTag'} type="text" name="newTag" />
                                     })}
-                                {onLoadingAddingTag &&
-                                    <button onClick={onSubmitTag} className="addingTag" style={{ width: "40px" }}>Thêm</button>
-                                }
                             </div>
                             <input onClick={checkDataAndSubmit} type="submit" name="submit" value="Submit" />
                         </form>

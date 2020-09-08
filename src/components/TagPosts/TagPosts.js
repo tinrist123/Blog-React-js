@@ -21,6 +21,8 @@ export default function Home(props) {
 
     if (loading) return Loading;
 
+
+
     return (
         <div >
             <Quote />

@@ -1615,7 +1615,7 @@ span.cate span {
  .cardImg {
       background: url("https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753");
       background-size: cover;
-      background-position: top left;
+      background-position: center;
       background-repeat: no-repeat;
     }
 
@@ -1692,7 +1692,8 @@ span.cate span {
     }
 
     .Signin-form {
-      padding-top: 15em;
+      padding-top: 15rem;
+      padding-bottom: 2rem;
       background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
     }
 
@@ -1816,4 +1817,15 @@ ul.tags li a:hover {
 
 .contact .descriptiop a:hover{
   color: #fa4b2a;
+}
+
+ul.checkBoxList li label input {
+    display: inline-block;
+    width: auto;
+    margin-bottom: 1rem;
+}
+
+ul.checkBoxList li label {
+    margin-left: 1rem;
+    /* display: inline; */
 }
