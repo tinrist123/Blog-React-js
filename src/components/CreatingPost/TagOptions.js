@@ -20,7 +20,7 @@ export default function TagsCheckbox({ url, name, value }) {
             {
                 options.map((option) => {
                     return (
-                        <li><label><input type={"checkbox"} key={option.Alias} value={option['id']} />{option[value]}</label></li>
+                        <li><label><input type={"checkbox"} key={option.Alias} name={"tagList"} value={option['id']} />{option[value]}</label></li>
                     )
                 })
             }
